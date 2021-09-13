@@ -77,7 +77,7 @@ namespace PickIt
 
         public override bool Initialise()
         {
-            _currentLabels = new TimeCache<List<CustomItem>>(UpdateCurrentLabels, 50); // alexs idea <3
+            _currentLabels = new TimeCache<List<CustomItem>>(UpdateCurrentLabels, 100); // alexs idea <3
             
             #region Register keys
 
