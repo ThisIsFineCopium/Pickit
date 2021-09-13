@@ -77,7 +77,7 @@ namespace PickIt
 
         public override bool Initialise()
         {
-            _currentLabels = new TimeCache<List<CustomItem>>(UpdateCurrentLabels, 500); // alexs idea <3
+            _currentLabels = new TimeCache<List<CustomItem>>(UpdateCurrentLabels, 50); // alexs idea <3
             
             #region Register keys
 
@@ -94,7 +94,7 @@ namespace PickIt
             _debugTimer.Reset();
             _workCoroutine = new WaitTime(Settings.ExtraDelay);
             Settings.ExtraDelay.OnValueChanged += (sender, i) => _workCoroutine = new WaitTime(i);
-            ChestLabelCacheList = new TimeCache<List<LabelOnGround>>(UpdateChestList, 200);
+            ChestLabelCacheList = new TimeCache<List<LabelOnGround>>(UpdateChestList, 20);
             LoadRuleFiles();
             LoadCustomItems();
             return true;
