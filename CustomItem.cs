@@ -67,6 +67,7 @@ namespace PickIt
                 "Wand"
             };
 
+            IsArchnemesisMod = GroundItem.HasComponent<ArchnemesisMod>();
             if (GroundItem.HasComponent<Quality>())
             {
                 var quality = GroundItem.GetComponent<Quality>();
@@ -117,6 +118,7 @@ namespace PickIt
 
         public MinimapIcon WorldIcon { get;}
         public int Height { get; }
+        public bool IsArchnemesisMod { get; }
         public bool IsElder { get; }
         public bool IsIdentified { get; }
         public bool IsRGB { get; }
