@@ -15,13 +15,7 @@ using ImGuiNET;
 using Random_Features.Libs;
 using SharpDX;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Windows.Forms;
-using ExileCore.PoEMemory.Elements;
 using Newtonsoft.Json;
 using Input = ExileCore.Input;
 using nuVector2 = System.Numerics.Vector2;
@@ -1071,7 +1065,7 @@ namespace PickIt
                     var s = x.Split('=');
                     if (s.Length == 2) result[s[0].Trim()] = int.Parse(s[1]);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     DebugWindow.LogError($"{nameof(PickIt)} => Error when parse weight.");
                 }
