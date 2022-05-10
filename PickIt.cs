@@ -727,11 +727,18 @@ namespace PickIt
         }
         
         private List<LabelOnGround> UpdateChestList() =>
-            GameController?.Game?.IngameState?.IngameUi?.ItemsOnGroundLabelsVisible.Where(x => x.Address != 0 &&
-                x.ItemOnGround?.Path != null &&
-                x.IsVisible &&
-                /*x.CanPickUp &&*/ (x.ItemOnGround.Path.Contains("LeaguesExpedition") || x.ItemOnGround.Path.StartsWith("Metadata/Chests/Blight")) &&
-                x.ItemOnGround.HasComponent<Chest>()).OrderBy(x => x.ItemOnGround.DistancePlayer).ToList();
+            GameController?.Game?.IngameState?.IngameUi?.ItemsOnGroundLabelsVisible.Where(x => x.Address != 0
+             && x.IsVisible 
+             && x.ItemOnGround != null 
+             && x.ItemOnGround.HasComponent<Chest>()
+             // && x.CanPickUp
+             && x.ItemOnGround.Path != null 
+             && (x.ItemOnGround.Path.StartsWith("Metadata/Chests/Chest")
+              || x.ItemOnGround.Path.Contains("LeaguesExpedition") 
+              || x.ItemOnGround.Path.StartsWith("Metadata/Chests/Blight")
+              || x.ItemOnGround.Path.StartsWith("Metadata/Chests/Breach")
+              || x.ItemOnGround.Path.StartsWith("Metadata/Chests/LegionChests"))
+            ).OrderBy(x => x.ItemOnGround.DistancePlayer).ToList();
 
         private IEnumerator FindItemToPick()
         {
